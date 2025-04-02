@@ -14,6 +14,7 @@ export default function CompleteFormModal({ showModal, setShowModal, paymentType
         </select>
       </div>
       <>
+      {/* completeOrder is sent from cart.js module to this child component. It takes one argument, the id of a selected payment method */}
         <button className="button is-success" onClick={() => completeOrder(selectedPayment)}>Complete Order</button>
         <button className="button" onClick={() => setShowModal(false)}>Cancel</button>
       </>

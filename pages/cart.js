@@ -32,6 +32,7 @@ export default function Cart() {
     })
   }, [])
 
+  // References cart from state. Function definition is sent to prop to CompleteFormModal
   const completeOrder = (paymentTypeId) => {
     completeCurrentOrder(cart.id, paymentTypeId).then(() => router.push('/my-orders'))
   }
