@@ -16,13 +16,13 @@ export function getOrders() {
   });
 }
 
-export function completeCurrentOrder(orderId, paymentTypeId) {
-  return fetchWithResponse(`orders/${orderId}`, {
-    method: "PUT",
+export function completeCurrentOrder(payment_type_id) {
+  return fetchWithResponse(`cart/complete`, {
+    method: "Post",
     headers: {
       Authorization: `Token ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ payment_type: paymentTypeId }),
+    body: JSON.stringify({ payment_type_id })
   });
 }
