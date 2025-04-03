@@ -25,7 +25,7 @@ export default function Orders() {
             orders.map((order) => (
               <tr key={order.id}>
                 <td>{order.created_date}</td>
-                <td>${order.total}</td> 
+                <td>${order.total_cost.toFixed(2)}</td> 
                 <td>{order.payment_type?.merchant_name}</td>
               </tr>
             ))
