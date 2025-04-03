@@ -7,7 +7,7 @@ import CartDetail from '../components/order/detail'
 import CompleteFormModal from '../components/order/form-modal'
 import { completeCurrentOrder, getCart } from '../data/orders'
 import { getPaymentTypes } from '../data/payment-types'
-import { removeProductFromOrder } from '../data/products'
+import { removeProductFromCart } from '../data/products'
 
 export default function Cart() {
   const [cart, setCart] = useState({})
@@ -38,7 +38,7 @@ export default function Cart() {
   }
 
   const removeProduct = (productId) => {
-    removeProductFromOrder(productId).then(refresh)
+    removeProductFromCart(productId).then(refresh)
   }
 
   return (

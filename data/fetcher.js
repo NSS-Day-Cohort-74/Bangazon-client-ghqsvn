@@ -19,6 +19,8 @@ const catchError = (err) => {
   if (err.message === "401") {
     window.location.href = "/login";
   }
+
+    
   if (err.message === "404") {
     throw Error(err.message);
   }

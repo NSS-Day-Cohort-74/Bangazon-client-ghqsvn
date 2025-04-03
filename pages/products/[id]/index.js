@@ -6,6 +6,7 @@ import { Detail } from '../../../components/product/detail'
 import { Ratings } from '../../../components/rating/detail'
 import { getProductById, likeProduct, unLikeProduct } from '../../../data/products'
 
+
 export default function ProductDetail() {
   const router = useRouter()
   const { id } = router.query
@@ -36,6 +37,7 @@ export default function ProductDetail() {
   return (
     <div className="columns is-centered">
       <div className="column">
+      
         <Detail product={product} like={like} unlike={unlike}/>
         <Ratings
           refresh={refresh}
