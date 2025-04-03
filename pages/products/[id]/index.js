@@ -5,6 +5,10 @@ import Navbar from '../../../components/navbar'
 import { Detail } from '../../../components/product/detail'
 import { Ratings } from '../../../components/rating/detail'
 import { getProductById, likeProduct, unLikeProduct } from '../../../data/products'
+import dynamic from 'next/dynamic'
+
+const Details = dynamic(() => import('../../../components/product/detail'), {ssr: true})
+const Rating = dynamic(() => import('../../../components/rating/detail'), {ssr: true})
 
 export default function ProductDetail() {
   const router = useRouter()
@@ -12,9 +16,11 @@ export default function ProductDetail() {
   const [product, setProduct] = useState({})
 
   const refresh = () => {
+    console.log("fetching for product")
     getProductById(id).then(productData => {
       if (productData) {
         setProduct(productData)
+        console.log(product)
       }
     })
   }
@@ -28,6 +34,7 @@ export default function ProductDetail() {
   }
 
   useEffect(() => {
+    console.log(id)
     if (id) {
       refresh()
     }
@@ -36,6 +43,14 @@ export default function ProductDetail() {
   return (
     <div className="columns is-centered">
       <div className="column">
+      
+        <div> This should show up lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</div>
+        <div> This should show up lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</div>
+        <div> This should show up lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</div>
+        <div> This should show up lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</div>
+        <div> This should show up lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</div>
+        <div> This should show up lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</div>
+        <div> This should show up lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</div>
         <Detail product={product} like={like} unlike={unlike}/>
         <Ratings
           refresh={refresh}

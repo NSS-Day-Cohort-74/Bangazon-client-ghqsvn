@@ -30,17 +30,19 @@ export function getProductById(id) {
   })
 }
 
-export function addProductToOrder(id) {
-  return fetchWithResponse(`products/${id}/add_to_order`, {
+export function addProductToCart(id) {
+  return fetchWithResponse(`profile/cart`, {
     method: 'POST',
     headers: {
+      "Content-Type": "application/json",
       Authorization: `Token ${localStorage.getItem('token')}`
-    }
+    },
+    body: JSON.stringify({product_id: id})
   })
 }
 
-export function removeProductFromOrder(id) {
-  return fetchWithoutResponse(`products/${id}/remove-from-order`, {
+export function removeProductFromCart(id) {
+  return fetchWithoutResponse(`lineitems/${id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Token ${localStorage.getItem('token')}`
@@ -49,7 +51,7 @@ export function removeProductFromOrder(id) {
 }
 
 export function deleteProduct(id) {
-  return fetchWithoutResponse(`products/${id}`, {
+  return fetchWithoutResponse(`lineitems/${id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Token ${localStorage.getItem('token')}`

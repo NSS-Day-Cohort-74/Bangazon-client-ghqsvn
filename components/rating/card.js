@@ -1,4 +1,7 @@
-import { Rating } from 'react-simple-star-rating'
+
+import dynamic from 'next/dynamic'
+
+const Rating = dynamic(() => import('react-simple-star-rating').then(mod => mod.rating), {ssr: false})
 
 export function RatingCard({ rating }) {
   return (

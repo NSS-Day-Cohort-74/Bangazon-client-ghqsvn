@@ -4,6 +4,8 @@ export default function CartDetail({ cart, removeProduct }) {
   const headers = ['Product', 'Price', '']
   const footers = ['Total', cart.total, '']
 
+
+  
   return (
     <Table headers={headers} footers={footers}>
       {
