@@ -5,13 +5,9 @@ import { Header } from './header'
 
 export function Ratings({ average_rating, refresh, ratings = [], number_purchased, likes = [] }) {
   const [productId, setProductId] = useState(0)
-
-  
   const saveRating = (newRating) => {
-      if (window !== "undefined") {
-      rateProduct(productId, newRating).then(refresh)
-    }
-    
+    rateProduct(productId, newRating).then(refresh)
+
   }
 
   useEffect(() => {
