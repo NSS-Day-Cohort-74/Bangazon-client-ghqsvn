@@ -1,8 +1,8 @@
-export function Input({ id, type="text", placeholder="", refEl=undefined, label=undefined, onChangeEvent, addlClass="", children }) {
+export function Input({ id, type="text", placeholder="", refEl=undefined, label=undefined, onChangeEvent, addlClass="", children, extra="" }) {
   return (
     <div className={`field ${addlClass}`}>
       {label && <label className="label">{label}</label>}
-      <div className="control">
+      <div className="control level">
         <input
           id={id}
           placeholder={placeholder}
@@ -11,6 +11,7 @@ export function Input({ id, type="text", placeholder="", refEl=undefined, label=
           ref={refEl}
           onChange={onChangeEvent}
         ></input>
+        {extra}
       </div>
       {children}
     </div>
