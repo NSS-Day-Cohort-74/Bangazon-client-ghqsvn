@@ -17,8 +17,9 @@ export function getOrders() {
 }
 
 export function completeCurrentOrder(payment_type_id) {
+  console.log(payment_type_id)
   return fetchWithResponse(`cart/complete`, {
-    method: "Post",
+    method: "POST",
     headers: {
       Authorization: `Token ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",
