@@ -25,7 +25,7 @@ export default function AddPaymentModal({ showModal, setShowModal, addNewPayment
           id="expirationDate"
           type="text"
           label="Expiration Date"
-          placeholder={new Date().toLocaleDateString()}
+          placeholder="DD/MM/YYYY"
           refEl={expirationDate}
         />
       </>
