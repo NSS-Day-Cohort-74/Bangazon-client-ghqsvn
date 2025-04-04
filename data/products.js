@@ -31,7 +31,7 @@ export function getProductById(id) {
 }
 
 export function addProductToCart(id) {
-  return fetchWithResponse(`cart`, {
+  return fetchWithResponse(`profile/cart`, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
