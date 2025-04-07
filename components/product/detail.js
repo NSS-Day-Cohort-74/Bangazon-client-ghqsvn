@@ -31,6 +31,8 @@ export function Detail({ product, like, unlike }) {
 
   return (
     <>
+     <div className="has-background-red">
+
       <Modal setShowModal={setShowModal} showModal={showModal} title="Recommend this product to a user">
         <Input id="username" label="Enter a username" refEl={usernameEl}>
           {
@@ -42,11 +44,11 @@ export function Detail({ product, like, unlike }) {
           <button className="button" onClick={() => setShowModal(false)}>Cancel</button>
         </>
       </Modal>
-      <div className="tile is-ancestor">
+      <div className="tile is-ancestor ">
         <div className="tile is-parent">
           <article className="tile is-child">
             <figure className="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/640x480.png"></img>
+              <img src={product.image_path}></img>
             </figure>
           </article>
         </div>
@@ -66,12 +68,12 @@ export function Detail({ product, like, unlike }) {
                 <button
                   className="button is-danger is-outlined"
                   onClick={() => setShowModal(true)}
-                >Recommend this Product</button>
+                  >Recommend this Product</button>
               </p>
               <p className="control">
                 {
                   product.is_liked ?
-                    <button className="button is-link is-outlined" onClick={unlike}>
+                  <button className="button is-link is-outlined" onClick={unlike}>
                       <span className="icon is-small">
                         <i className="fas fa-heart-broken"></i>
                       </span>
@@ -90,6 +92,7 @@ export function Detail({ product, like, unlike }) {
           </article>
         </div>
       </div>
+                </div>
     </>
   )
 }

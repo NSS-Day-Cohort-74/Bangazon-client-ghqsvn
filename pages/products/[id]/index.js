@@ -55,7 +55,9 @@ ProductDetail.getLayout = function getLayout(page) {
   return (
     <Layout>
       <Navbar />
-      {page}
+      <div className='page'>
+        {page}
+        </div>
     </Layout>
   )
 }
