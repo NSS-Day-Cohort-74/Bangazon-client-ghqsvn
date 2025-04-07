@@ -7,5 +7,9 @@ body {
 
 .navbar.is-top {
     z-index: 35;
+    
 }
 
+.page {
+    margin-top: 200px;
+}

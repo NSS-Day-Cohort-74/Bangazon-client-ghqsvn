@@ -43,6 +43,8 @@ export default function Products() {
 
   return (
     <>
+    <div className='page'>
+
       <Filter productCount={products.length} onSearch={searchProducts} locations={locations} />
 
       <div className="columns is-multiline">
@@ -50,6 +52,7 @@ export default function Products() {
           <ProductCard product={product} key={product.id} />
         ))}
       </div>
+        </div>
     </>
   )
 }
