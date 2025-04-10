@@ -17,9 +17,7 @@ export default function Navbar() {
     
   }, [token]);
 
-  useEffect(() => {
-    console.log({"profile":profile})
-  },[])
+  
 
 
   const showMobileNavbar = () => {
