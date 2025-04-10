@@ -8,6 +8,7 @@ import { useAppContext } from "../context/state";
 import { login } from "../data/auth";
 
 export default function Login() {
+  // After storing the setToken function in context, we destructure it here
   const { setToken } = useAppContext();
   const username = useRef("");
   const password = useRef("");
@@ -22,8 +23,9 @@ export default function Login() {
 
     login(user).then((res) => {
       if (res.token) {
-        setToken(res.token);
-        router.push("/");
+        // Because we destructured the setToken function, we can update state here
+        router.push("/").then(() => setToken(res.token));
+        localStorage.setItem('token', res.token);
       }
     });
   };

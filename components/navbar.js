@@ -4,7 +4,7 @@ import { useAppContext } from "../context/state";
 import { useRouter } from "next/router";
 
 export default function Navbar() {
-  const { token, profile } = useAppContext();
+  const { token, profile, setToken } = useAppContext();
   const hamburger = useRef();
   const navbar = useRef();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,7 +42,7 @@ export default function Navbar() {
           <Link href="/profile" className="navbar-item">
             Profile
           </Link>
-          {profile.store ? (
+          {profile.store?.name ? (
             <>
               <Link className="navbar-item" href={`/stores/${profile.store.id}`}>
                 View Your Store
@@ -62,6 +62,7 @@ export default function Navbar() {
             onClick={() => {
               localStorage.removeItem("token");
               setIsLoggedIn(false);
+              setToken("")
               router.push("/login");
             }}
           >
