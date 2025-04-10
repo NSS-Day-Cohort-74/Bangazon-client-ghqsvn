@@ -48,8 +48,10 @@ export default function Navbar() {
           </Link>
           {profile["store_name"] ? (
             <>
+             
               <Link href={`/stores/${profile.id}`}>
                 <p className="navbar-item">View Your Store</p>
+
               </Link>
               <Link href="/products/new" className="navbar-item">
                 Add a new Product

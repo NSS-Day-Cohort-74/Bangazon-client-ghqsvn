@@ -17,7 +17,8 @@ export function getStoreById(id) {
 }
 
 export function addStore(store) {
-  return fetchWithResponse(`stores`, {
+  return fetchWithResponse('profile/store', {
+
     method: 'POST',
     headers: {
       Authorization: `Token ${localStorage.getItem('token')}`,

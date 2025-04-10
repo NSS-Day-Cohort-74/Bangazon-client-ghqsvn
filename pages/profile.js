@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import CardLayout from '../components/card-layout'
 import Layout from '../components/layout'
 import Navbar from '../components/navbar'
@@ -43,7 +43,7 @@ export default function Profile() {
       <CardLayout title="Products recommended to you" width="is-full">
         <div className="columns is-multiline">
           {
-            profile.recommendations?.map(recommendation => (
+            profile.recommends?.map(recommendation => (
               <ProductCard product={recommendation.product} key={recommendation.product.id} width="is-one-third" />
             ))
           }
