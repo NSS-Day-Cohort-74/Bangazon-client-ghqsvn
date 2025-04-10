@@ -14,7 +14,12 @@ export default function Navbar() {
     if (token) {
       setIsLoggedIn(true);
     }
+    
   }, [token]);
+  
+
+  
+
 
   const showMobileNavbar = () => {
     hamburger.current.classList.toggle("is-active");
@@ -44,8 +49,10 @@ export default function Navbar() {
           </Link>
           {profile.store?.name ? (
             <>
-              <Link className="navbar-item" href={`/stores/${profile.store.id}`}>
-                View Your Store
+             
+              <Link href={`/stores/${profile.id}`}>
+                <p className="navbar-item">View Your Store</p>
+
               </Link>
               <Link href="/products/new" className="navbar-item">
                 Add a new Product

@@ -45,9 +45,11 @@ export default function StoreDetail() {
   return (
     <>
       <Detail store={store} isOwner={isOwner} favorite={favorite} unfavorite={unfavorite} />
+      <h1 className='has-text-centered title'> Selling </h1>
+      
       <div className="columns is-multiline">
         {
-          store.products?.map(product => (
+          store.products?.filter(p => p.number_sold < p.quantity).map(product => (
             <ProductCard
               product={product}
               key={product.id}
@@ -56,6 +58,30 @@ export default function StoreDetail() {
             />
           ))
         }
+        
+        
+        {
+          store.products?.length === 0 ?
+            <p>There's no products yet</p>
+            :
+            <></>
+        }
+      </div>
+      
+      <h1 className='has-text-centered title'> Sold </h1>
+      <div className="columns is-multiline">
+      
+        {
+          store.products?.filter(product => product.number_sold === product.quantity).map(product => (
+            <ProductCard
+              product={product}
+              key={product.id}
+              isOwner={isOwner}
+              removeProduct={removeProduct}
+            />
+          ))
+        }
+
         {
           store.products?.length === 0 ?
             <p>There's no products yet</p>
