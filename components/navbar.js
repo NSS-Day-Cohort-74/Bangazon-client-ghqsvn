@@ -16,6 +16,7 @@ export default function Navbar() {
     }
     
   }, [token]);
+  
 
   
 
@@ -46,7 +47,7 @@ export default function Navbar() {
           <Link href="/profile" className="navbar-item">
             Profile
           </Link>
-          {profile["store"]["name"] ? (
+          {profile.store?.name ? (
             <>
              
               <Link href={`/stores/${profile.id}`}>
