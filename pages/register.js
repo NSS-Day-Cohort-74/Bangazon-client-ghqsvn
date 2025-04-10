@@ -35,6 +35,7 @@ export default function Register() {
     register(user).then((res) => {
       if (res.token) {
         setToken(res.token);
+        localStorage.setItem("token", res.token);
         router.push("/");
       }
     });
