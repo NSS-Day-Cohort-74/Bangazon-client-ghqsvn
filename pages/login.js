@@ -24,9 +24,8 @@ export default function Login() {
     login(user).then((res) => {
       if (res.token) {
         // Because we destructured the setToken function, we can update state here
-        setToken(res.token);
+        router.push("/").then(() => setToken(res.token));
         localStorage.setItem('token', res.token);
-        router.push("/");
       }
     });
   };

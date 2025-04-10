@@ -9,16 +9,25 @@ export function AppWrapper({ children }) {
   const [profile, setProfile] = useState({})
   const [token, setToken] = useState("")
   const router = useRouter()
-  
+
+  // Useful for when a window is closed and a user opens a new session, still logged in
+  useEffect(() => {
+    setToken(localStorage.getItem("token"))
+  }, [])
+
   useEffect(() => {
     const authRoutes = ['/login', '/register']
     if (token) {
+      // Gets user profile for any route, not during authentication process
       if (!authRoutes.includes(router.pathname)) {
         getUserProfile().then((profileData) => {
           if (profileData) {
             setProfile(profileData)
           }
         })
+      }
+      else {
+        window.alert("There has been an issue retrieving your user profile.")
       }
     }
   }, [token])
