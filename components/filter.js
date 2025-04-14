@@ -8,6 +8,7 @@ export default function Filter({ productCount, onSearch, locations }) {
     category: useRef(),
     name: useRef(),
     min_price: useRef(),
+    max_price: useRef(),
     order_by: useRef(),
     direction: useRef(),
     number_sold: useRef(),
@@ -22,7 +23,7 @@ export default function Filter({ productCount, onSearch, locations }) {
       if (ref === 'direction') {
         refEls[ref].current.checked = false
         setDirection('asc')
-      } else if (["min_price", "name"].includes(ref)) {
+      } else if (["min_price", "max_price", "name"].includes(ref)) {
         refEls[ref].current.value = ""
       }
       else {
@@ -143,6 +144,16 @@ export default function Filter({ productCount, onSearch, locations }) {
                     placeholder="Minimum Price"
                     addlClass="is-horizontal"
                     refEl={refEls.min_price}
+                  />
+
+                </div>
+                <hr className="dropdown-divider"></hr>
+                <div className="dropdown-item">
+                  <Input
+                    type="number"
+                    placeholder="Maximum Price"
+                    addlClass="is-horizontal"
+                    refEl={refEls.max_price}
                   />
 
                 </div>
