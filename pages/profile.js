@@ -6,9 +6,13 @@ import { ProductCard } from "../components/product/card";
 import { StoreCard } from "../components/store/card";
 import { useAppContext } from "../context/state";
 import { getUserProfile } from "../data/auth";
+import { getLiked } from "../data/products"
+
 
 export default function Profile() {
   const { profile, setProfile } = useAppContext();
+  const [ likedProducts, setLikedProducts ] = useState([])
+
 
   useEffect(() => {
     getUserProfile().then((profileData) => {
@@ -17,6 +21,14 @@ export default function Profile() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    getLiked().then(res => setLikedProducts(res))
+    
+
+  },[])
+
+
 
   return (
     <>
@@ -59,7 +71,7 @@ export default function Profile() {
 
       <CardLayout title="Products you've liked" width="is-full">
         <div className="columns is-multiline">
-          {profile.likes?.map((product) => (
+          {likedProducts?.map((product) => (
             <ProductCard
               product={product}
               key={product.id}
