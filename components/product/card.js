@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
-export function ProductCard({ product, removeProduct, isOwner = false, width="is-one-quarter" }) {
+export function ProductCard({ product, removeProduct, isOwner = false, width="is-one-quarter", cardWidth }) {
   const [p,sp] = useState(product)
   return (
-    <div className={`column ${width}`}>
+    <div className={`column ${cardWidth}`}>
       <div className="card">
         <div className="card-image">
           <figure className="image is-4by3">
-            <img src={product.image_path} alt="Placeholder image"/>
+            <img src={`http://localhost:8000` + product.image_path} alt="Placeholder image"/>
           </figure>
         </div>
         <header className="card-header">

@@ -7,7 +7,9 @@ export function Select({id, refEl, options, title, label, addlClass = "" }) {
           <option value="0">{title}</option>
           {
             options.map(option => (
-              <option key={option.id} value={option.id}>{option.name}</option>
+
+              <option key={option.id} value={option.id}>{option.name || option}</option>
+            
             ))
           }
         </select>
