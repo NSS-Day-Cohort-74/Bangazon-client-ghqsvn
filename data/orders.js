@@ -27,3 +27,11 @@ export function completeCurrentOrder(payment_type_id) {
     body: JSON.stringify({ payment_type_id })
   });
 }
+export function deleteAllFromCart() {
+  return fetch("http://localhost:8000/cart/delete_all", {
+    method: "DELETE",
+    headers: {
+      Authorization: `Token ${localStorage.getItem("token")}`,
+    },
+  });
+}
