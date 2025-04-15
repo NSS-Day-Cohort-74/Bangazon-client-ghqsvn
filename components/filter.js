@@ -12,7 +12,7 @@ export default function Filter({ productCount, onSearch, locations }) {
     direction: useRef(),
     number_sold: useRef(),
   }
-
+  console.log(locations)
   const [showFilters, setShowFilters] = useState(false)
   const [query, setQuery] = useState('')
   const [categories, setCategories] = useState([{id: 1, name: 'Apples'}, {id: 2, name: 'Oranges'}, {id: 3, name: 'Lemons'}])
