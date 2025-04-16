@@ -48,7 +48,7 @@ export function Detail({ product, like, unlike }) {
         <div className="tile is-parent">
           <article className="tile is-child">
             <figure className="image is-4by3">
-              <img src={product.image_path}></img>
+              <img src={product.image_path } onError={(e) => e.target.src = 'http://localhost:8000/media/products/NI.png'}></img>
             </figure>
           </article>
         </div>

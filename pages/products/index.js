@@ -48,7 +48,8 @@ export default function Products() {
       <>
         <div className="page">
           <Filter
-            productCount={products.length}
+            productHeader={"products"}
+            productCount={products.products.length}
             onSearch={searchProducts}
             // Passes the locations array as a prop to the Filter function component
             locations={locations}
@@ -72,7 +73,7 @@ return (
     <>
       <div className="" style={{marginTop:"100px"}}>
         <Filter
-          productCount={products.length}
+          
           onSearch={searchProducts}
           locations={locations}
         />
@@ -83,11 +84,11 @@ return (
             return (
               <div key={category.id} className="">
                 <div className="">
-                  <h1  className="is-flex is-justify-content-center is-size-3 p-3">{category.name}</h1>
+                  <h1  className="is-flex is-justify-content-center is-size-3 p-3 ">{category.name}</h1>
                 </div>
               <div className="columns "  >
                 {category.last_5.map((p) => (
-                  <ProductCard product={p} key={p.id} className="" style={{border:"3px solid black"}}/>
+                  <ProductCard product={p} key={p.id} className="" style={{border:"3px solid black "}}/>
                 ))}
               </div>
               </div>
