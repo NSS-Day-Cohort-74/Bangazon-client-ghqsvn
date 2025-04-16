@@ -6,7 +6,6 @@ import { ProductCard } from "../components/product/card";
 import { StoreCard } from "../components/store/card";
 import { useAppContext } from "../context/state";
 import { getUserProfile } from "../data/auth";
-import { getLiked } from "../data/products"
 
 
 export default function Profile() {
