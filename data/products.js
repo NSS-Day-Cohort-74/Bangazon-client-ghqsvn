@@ -60,13 +60,13 @@ export function deleteProduct(id) {
 }
 
 export function rateProduct(productId, rating) {
-  return fetchWithResponse(`products/${productId}/rate-product`, {
+  return fetchWithResponse(`products/${productId}/rate`, {
     method: "POST",
     headers: {
       Authorization: `Token ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(rating),
+    body: JSON.stringify({ rating }),
   });
 }
 
@@ -130,4 +130,4 @@ export function getLiked() {
     },
   });
 }
-// YOOOOO SHARE BROWSER HEN_DAWG!!! 
+// YOOOOO SHARE BROWSER HEN_DAWG!!!

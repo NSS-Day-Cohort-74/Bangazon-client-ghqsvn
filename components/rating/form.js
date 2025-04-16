@@ -1,20 +1,17 @@
-'use client';
-import { Rating } from 'react-simple-star-rating'
-import { useState } from 'react'
+"use client";
+import { Rating } from "react-simple-star-rating";
+import { useState } from "react";
 
 export default function RatingForm({ saveRating }) {
-  const [rating, setRating] = useState(0)
-  const [comment, setComment] = useState("")
-  
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+
   const submitRating = () => {
-    const outOf5 = rating/20
     saveRating({
-      score: outOf5,
-      review: comment
-    })
-  }
-
-
+      score: rating,
+      review: comment,
+    });
+  };
 
   return (
     <div className="tile is-child ">
@@ -25,16 +22,25 @@ export default function RatingForm({ saveRating }) {
         <div className="media-content">
           <div className="field">
             <p className="control">
-              <textarea className="textarea" placeholder="Add your review" value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
+              <textarea
+                className="textarea"
+                placeholder="Add your review"
+                value={comment}
+                onChange={({ target: { value: newComment } }) =>
+                  setComment(newComment)
+                }
+              ></textarea>
             </p>
           </div>
           <div className="field">
             <p className="control">
-              <button className="button" onClick={submitRating}>Post Rating</button>
+              <button className="button" onClick={submitRating}>
+                Post Rating
+              </button>
             </p>
           </div>
         </div>
       </article>
     </div>
-  )
+  );
 }
