@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { getCategories } from '../data/products'
 import { Input, Select } from './form-elements'
 
-export default function Filter({ productCount, onSearch, locations }) {
+export default function Filter({ productCount, onSearch, locations, productHeader }) {
   const refEls = {
     location: useRef(),
     category: useRef(),
@@ -13,7 +13,7 @@ export default function Filter({ productCount, onSearch, locations }) {
     direction: useRef(),
     number_sold: useRef(),
   }
-
+  console.log(locations)
   const [showFilters, setShowFilters] = useState(false)
   const [query, setQuery] = useState('')
   const [categories, setCategories] = useState([{id: 1, name: 'Apples'}, {id: 2, name: 'Oranges'}, {id: 3, name: 'Lemons'}])
@@ -83,7 +83,7 @@ export default function Filter({ productCount, onSearch, locations }) {
       <div className="level-left">
         <div className="level-item">
           <p className="subtitle is-5">
-            <strong>{productCount}</strong> products
+            <strong>{productCount} {productHeader}</strong> 
           </p>
         </div>
         <div className="level-item">
