@@ -5,9 +5,10 @@ import Layout from '../components/layout'
 import Navbar from '../components/navbar'
 import CartDetail from '../components/order/detail'
 import CompleteFormModal from '../components/order/form-modal'
-import { completeCurrentOrder, getCart } from '../data/orders'
+import { completeCurrentOrder, getCart, deleteAllFromCart } from '../data/orders'
 import { getPaymentTypes } from '../data/payment-types'
 import { removeProductFromCart } from '../data/products'
+
 
 export default function Cart() {
   const [cart, setCart] = useState({})
@@ -41,6 +42,18 @@ export default function Cart() {
     removeProductFromCart(productId).then(refresh)
   }
 
+  const deleteOrder = () => {
+    deleteAllFromCart().then((res) => {
+      if (res.status === 204) {
+        refresh();
+      } else {
+        res.json().then(data => alert(data.error || "Something went wrong"));
+      }
+    });
+  };
+  
+  
+
   return (
     <>
       <CompleteFormModal
@@ -53,7 +66,7 @@ export default function Cart() {
         <CartDetail cart={cart} removeProduct={removeProduct} />
         <>
           <a className="card-footer-item" onClick={() => setShowCompleteForm(true)}>Complete Order</a>
-          <a className="card-footer-item">Delete Order</a>
+          <a className="card-footer-item" onClick={deleteOrder}>Delete Order</a>
         </>
       </CardLayout>
     </>
