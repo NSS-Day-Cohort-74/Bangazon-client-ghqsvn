@@ -14,12 +14,7 @@ export default function Navbar() {
     if (token) {
       setIsLoggedIn(true);
     }
-    
   }, [token]);
-  
-
-  
-
 
   const showMobileNavbar = () => {
     hamburger.current.classList.toggle("is-active");
@@ -47,12 +42,17 @@ export default function Navbar() {
           <Link href="/profile" className="navbar-item">
             Profile
           </Link>
+          {profile.is_admin ? (
+            <Link href="/reports" className="navbar-item">
+              Reports
+            </Link>
+          ) : (
+            ""
+          )}
           {profile.store?.name ? (
             <>
-             
               <Link href={`/stores/${profile.id}`}>
                 <p className="navbar-item">View Your Store</p>
-
               </Link>
               <Link href="/products/new" className="navbar-item">
                 Add a new Product
@@ -69,7 +69,7 @@ export default function Navbar() {
             onClick={() => {
               localStorage.removeItem("token");
               setIsLoggedIn(false);
-              setToken("")
+              setToken("");
               router.push("/login");
             }}
           >
