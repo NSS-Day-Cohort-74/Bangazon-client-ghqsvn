@@ -11,7 +11,7 @@ const Reports = () => {
     const prefix = url.includes("?") ? "&" : "?";
     const token = localStorage.getItem("token");
     if (url.includes("customer")) {
-      return token ? `${prefix}token=${token}` : "";
+      return token ? `1${prefix}token=${token}` : "";
     }
     return token ? `${prefix}token=${token}` : "";
   };
