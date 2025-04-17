@@ -7,7 +7,7 @@ export function Ratings({
   average_rating,
   refresh,
   ratings = [],
-  number_purchased,
+  number_sold,
   likes = [],
   productId,
 }) {
@@ -20,8 +20,8 @@ export function Ratings({
       <Header
         averageRating={average_rating}
         ratingsLen={ratings.length}
-        numberPurchased={number_purchased}
-        likesLength={likes.length}
+        numberPurchased={number_sold}
+        likesLength={likes}
       />
       <RatingsContainer ratings={ratings} saveRating={saveRating} />
     </div>
