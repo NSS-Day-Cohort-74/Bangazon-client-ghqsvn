@@ -112,15 +112,3 @@ export function likeProduct(productId) {
     },
   });
 }
-
-export function unLikeProduct(productId) {
-  return fetchWithoutResponse(`products/${productId}/like`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Token ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-  });
-}
-
-

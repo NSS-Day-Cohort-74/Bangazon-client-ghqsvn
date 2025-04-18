@@ -35,9 +35,6 @@ export default function ProductDetail() {
     likeProduct(id).then(refresh);
   };
 
-  const unlike = () => {
-    unLikeProduct(id).then(refresh);
-  };
 
   useEffect(() => {
     if (id) {
@@ -48,7 +45,7 @@ export default function ProductDetail() {
   return (
     <div className="columns is-centered">
       <div className="column">
-        <Detail product={product} like={like} unlike={unlike} />
+        <Detail product={product} like={like} />
         <Ratings
           refresh={refresh}
           number_sold={product.number_sold}
