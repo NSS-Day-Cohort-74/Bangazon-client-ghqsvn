@@ -1,96 +1,85 @@
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import Layout from '../../../components/layout'
-import Navbar from '../../../components/navbar'
-import { ProductCard } from '../../../components/product/card'
-import Detail from '../../../components/store/detail'
-import { useAppContext } from '../../../context/state'
-import { deleteProduct } from '../../../data/products'
-import { favoriteStore, getStoreById, unfavoriteStore } from '../../../data/stores'
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Layout from "../../../components/layout";
+import Navbar from "../../../components/navbar";
+import { ProductCard } from "../../../components/product/card";
+import Detail from "../../../components/store/detail";
+import { useAppContext } from "../../../context/state";
+import { deleteProduct } from "../../../data/products";
+import {
+  favoriteStore,
+  getStoreById,
+  unfavoriteStore,
+} from "../../../data/stores";
 
 export default function StoreDetail() {
-  const { profile } = useAppContext()
-  const router = useRouter()
-  const { id } = router.query
-  const [store, setStore] = useState({})
-  const [isOwner, setIsOwner] = useState(false)
+  const { profile } = useAppContext();
+  const router = useRouter();
+  const { id } = router.query;
+  const [store, setStore] = useState({});
+  const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
     if (id) {
-      refresh()
+      refresh();
     }
     if (parseInt(id) === profile.store?.id) {
-      setIsOwner(true)
+      setIsOwner(true);
     }
-  }, [id, profile])
+  }, [id, profile]);
 
-  const refresh = () => getStoreById(id).then(storeData => {
-    if (storeData) {
-      setStore(storeData)
-    }
-  })
+  const refresh = () =>
+    getStoreById(id).then((storeData) => {
+      if (storeData) {
+        setStore(storeData);
+      }
+    });
 
   const removeProduct = (productId) => {
-    deleteProduct(productId).then(refresh)
-  }
+    deleteProduct(productId).then(refresh);
+  };
 
   const favorite = () => {
-    favoriteStore(id).then(refresh)
-  }
-
-  const unfavorite = () => {
-    unfavoriteStore(id).then(refresh)
-  }
+    favoriteStore(id).then(refresh);
+  };
 
   return (
     <>
-      <Detail store={store} isOwner={isOwner} favorite={favorite} unfavorite={unfavorite} />
-      <h1 className='has-text-centered title'> Selling </h1>
-      
-      <div className="columns is-multiline">
-        {
-          store.products?.filter(p => p.number_sold < p.quantity).map(product => (
-            <ProductCard
-              product={product}
-              key={product.id}
-              isOwner={isOwner}
-              removeProduct={removeProduct}
-            />
-          ))
-        }
-        
-        
-        {
-          store.products?.length === 0 ?
-            <p>There's no products yet</p>
-            :
-            <></>
-        }
-      </div>
-      
-      <h1 className='has-text-centered title'> Sold </h1>
-      <div className="columns is-multiline">
-      
-        {
-          store.products?.filter(product => product.number_sold === product.quantity).map(product => (
-            <ProductCard
-              product={product}
-              key={product.id}
-              isOwner={isOwner}
-              removeProduct={removeProduct}
-            />
-          ))
-        }
+      <Detail store={store} isOwner={isOwner} favorite={favorite} />
+      <h1 className="has-text-centered title"> Selling </h1>
 
-        {
-          store.products?.length === 0 ?
-            <p>There's no products yet</p>
-            :
-            <></>
-        }
+      <div className="columns is-multiline">
+        {store.products
+          ?.filter((p) => p.number_sold < p.quantity)
+          .map((product) => (
+            <ProductCard
+              product={product}
+              key={product.id}
+              isOwner={isOwner}
+              removeProduct={removeProduct}
+            />
+          ))}
+
+        {store.products?.length === 0 ? <p>There's no products yet</p> : <></>}
+      </div>
+
+      <h1 className="has-text-centered title"> Sold </h1>
+      <div className="columns is-multiline">
+        {store.products
+          ?.filter((product) => product.number_sold === product.quantity)
+          .map((product) => (
+            <ProductCard
+              product={product}
+              key={product.id}
+              isOwner={isOwner}
+              removeProduct={removeProduct}
+            />
+          ))}
+
+        {store.products?.length === 0 ? <p>There's no products yet</p> : <></>}
       </div>
     </>
-  )
+  );
 }
 
 StoreDetail.getLayout = function getLayout(page) {
@@ -99,5 +88,5 @@ StoreDetail.getLayout = function getLayout(page) {
       <Navbar />
       {page}
     </Layout>
-  )
-}
+  );
+};
