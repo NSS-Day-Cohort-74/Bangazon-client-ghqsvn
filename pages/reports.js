@@ -40,16 +40,26 @@ const Reports = () => {
             {!url.includes("customer=") ? (
               <li className="card p-4 m-2">
                 <Link href={`${url}${getAuthParam(url)}`}>
+<<<<<<< HEAD
                   <button className="button is-secondary is-fullwidth">
+=======
+                  <button className="button is-secondary  is-fullwidth">
+>>>>>>> 2677379 (Updated reports styling)
                     {title}
                   </button>
                 </Link>
               </li>
             ) : (
               <div className="card p-4 m-2">
+<<<<<<< HEAD
                 <div
                   className="dropdown is-hoverable"
                   style={{ width: "100%" }}
+=======
+                <button
+                  className="button is-secondary  is-fullwidth mb-3"
+                  disabled
+>>>>>>> 2677379 (Updated reports styling)
                 >
                   <div className="dropdown-trigger" style={{ width: "100%" }}>
                     <button
