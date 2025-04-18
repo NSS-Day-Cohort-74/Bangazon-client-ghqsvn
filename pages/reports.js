@@ -29,7 +29,6 @@ const Reports = () => {
       }
     };
     fetchData(`http://localhost:8000/reports${getAuthParam()}`, setReports);
-    // fetchData(`http://localhost:8000/customers`, setCustomers);
   }, []);
 
   return (
@@ -41,7 +40,7 @@ const Reports = () => {
             {!url.includes("customer=") ? (
               <li className="card p-4 m-2">
                 <Link href={`${url}${getAuthParam(url)}`}>
-                  <button className="button is-primary is-fullwidth">
+                  <button className="button is-secondary  is-fullwidth">
                     {title}
                   </button>
                 </Link>
@@ -49,7 +48,7 @@ const Reports = () => {
             ) : (
               <div className="card p-4 m-2">
                 <button
-                  className="button is-primary is-fullwidth mb-3"
+                  className="button is-secondary  is-fullwidth mb-3"
                   disabled
                 >
                   <Link href={`${url}${getAuthParam(url)}`}>{title}</Link>
