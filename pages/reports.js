@@ -40,27 +40,25 @@ const Reports = () => {
             {!url.includes("customer=") ? (
               <li className="card p-4 m-2">
                 <Link href={`${url}${getAuthParam(url)}`}>
-                  <button className="button is-secondary  is-fullwidth">
+                  <button className="button is-secondary is-fullwidth">
                     {title}
                   </button>
                 </Link>
               </li>
             ) : (
               <div className="card p-4 m-2">
-                <button
-                  className="button is-secondary  is-fullwidth mb-3"
-                  disabled
+                <div
+                  className="dropdown is-hoverable"
+                  style={{ width: "100%" }}
                 >
-                  <Link href={`${url}${getAuthParam(url)}`}>{title}</Link>
-                </button>
-                <div className="dropdown is-hoverable">
-                  <div className="dropdown-trigger">
+                  <div className="dropdown-trigger" style={{ width: "100%" }}>
                     <button
-                      className="button is-light is-fullwidth"
+                      className="button is-secondary"
+                      style={{ width: "100%" }}
                       aria-haspopup="true"
                       aria-controls="dropdown-menu"
                     >
-                      <span>Select Customer</span>
+                      {title}
                     </button>
                   </div>
                   <div className="dropdown-menu" id="dropdown-menu" role="menu">
@@ -72,7 +70,7 @@ const Reports = () => {
                         placeholder="Enter Customer ID"
                       />
                       <button
-                        className="button is-link is-small is-fullwidth"
+                        className="button is-link is-secondary is-fullwidth"
                         onClick={({
                           target: {
                             previousSibling: { value },
